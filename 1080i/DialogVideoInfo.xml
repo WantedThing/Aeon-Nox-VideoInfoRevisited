@@ -618,7 +618,7 @@
                         <width>120</width>
 						<height>40</height>
 						<colordiffuse>grey</colordiffuse>
-						<texture fallback="flags/audioinfo/missingsound.png">$INFO[ListItem.AudioCodec,flags/audioinfo/]$INFO[Window.Property(AudioChannels.1),,.png]</texture>
+						<texture fallback="flags/audioinfo/missingsound.png">$INFO[ListItem.AudioCodec,flags/audioinfo/]$INFO[ListItem.AudioChannels,,.png]</texture>
 						<aspectratio>keep</aspectratio>
                         <visible>IsEmpty(Window.Property(AudioCodec.1)) + IsEmpty(Window.Property(AudioLanguage.2)) + IsEmpty(Window.Property(AudioCodec.2)) + IsEmpty(Window.Property(AudioLanguage.3)) + IsEmpty(Window.Property(AudioCodec.3))</visible>
                     </control>	
