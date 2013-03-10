@@ -115,13 +115,51 @@
                 <ondown>50</ondown>
                 <onup>130</onup>
                 <enable>!IsEmpty(ListItem.Writer)</enable>
-            </control>
+            </control>		
             <!-- Movie info -->
             <control type="group">
                 <posx>825</posx>
                 <posy>68</posy>
                 <width>1042</width>
                 <height>854</height>
+				<!-- Logo Titre -->
+				<control type="image" id="990"> 
+					<posx>-9</posx>
+					<posy>-55</posy>
+					<height>100</height> 
+					<aspectratio>keep</aspectratio> 
+					<colordiffuse>grey</colordiffuse>
+					<texture fallback="nerzhul">$INFO[ListItem.Path,,logo.png]</texture>	
+					<visible>!IsEmpty(ListItem.Tagline) + IsEmpty(ListItem.Top250)</visible>
+				</control>  	
+				<control type="image" id="990"> 
+					<posx>-179</posx>
+					<posy>-49</posy>
+					<height>100</height> 
+					<aspectratio>keep</aspectratio> 
+					<colordiffuse>grey</colordiffuse>
+					<texture fallback="nerzhul">$INFO[ListItem.Path,,logo.png]</texture>	
+					<visible>!IsEmpty(ListItem.Tagline) + !IsEmpty(ListItem.Top250)</visible>
+				</control>  	
+				<control type="image" id="990"> 
+					<posx>-265</posx>
+					<posy>-15</posy>
+					<height>100</height> 
+					<aspectratio>keep</aspectratio> 
+					<colordiffuse>grey</colordiffuse>
+					<texture fallback="nerzhul">$INFO[ListItem.Path,,logo.png]</texture>	
+					<visible>IsEmpty(ListItem.Tagline) + IsEmpty(ListItem.Top250)</visible>
+				</control>  	
+				<control type="image" id="990"> 
+					<posx>20</posx>
+					<posy>-19</posy>
+					<height>100</height> 
+					<aspectratio>keep</aspectratio> 
+					<colordiffuse>grey</colordiffuse>
+					<texture fallback="nerzhul">$INFO[ListItem.Path,,logo.png]</texture>	
+					<visible>IsEmpty(ListItem.Tagline) + !IsEmpty(ListItem.Top250)</visible>
+				</control>  
+<!--	-->
                 <control type="image">
                     <posy>90</posy>
                     <width>1042</width>
@@ -158,7 +196,7 @@
                     <height>200</height>
                     <aligny>top</aligny>
                     <itemgap>0</itemgap>
-                    <orientation>vertical</orientation>
+                    <orientation>vertical</orientation>			
                     <control type="label">
                         <width>918</width>
                         <height>50</height>
@@ -166,6 +204,16 @@
                         <font>Font_Reg38_Caps</font>
                         <animation effect="slide" start="0,0" end="0,30" time="0" condition="[Container.Content(movies) + IsEmpty(ListItem.TagLine)] | Container.Content(tvshows)">Conditional</animation>
                         <scroll>true</scroll>
+						<visible>StringCompare(Control.GetLabel(990),nerzhul)</visible>
+                    </control>
+                    <control type="label">
+                        <width>918</width>
+                        <height>50</height>
+                        <label> </label>
+                        <font>Font_Reg38_Caps</font>
+                        <animation effect="slide" start="0,0" end="0,30" time="0" condition="[Container.Content(movies) + IsEmpty(ListItem.TagLine)] | Container.Content(tvshows)">Conditional</animation>
+                        <scroll>true</scroll>
+						<visible>!StringCompare(Control.GetLabel(990),nerzhul)</visible>
                     </control>
                 <control type="grouplist">
                     <posx>0</posx>
@@ -217,14 +265,6 @@
                         <visible>Container.Content(episodes) + !IsEmpty(ListItem.TvShowTitle)</visible>
                     </control>
                 </control>
-					<!-- Logo Titre -->
-<!-- 				<control type="image"> 
-						<posx>-100</posx>
-						<height>100</height> 
-						<aspectratio>keep</aspectratio> 
-						<texture>$INFO[ListItem.Path,,logo-info.png]</texture>	
-						<visible>Container($INFO[listitem.Path]).HasFiles(logo-info.png)</visible>
-					</control>  -->
 <!-- Avertissements US
                <control type="image">
                     <posx>10</posx>
