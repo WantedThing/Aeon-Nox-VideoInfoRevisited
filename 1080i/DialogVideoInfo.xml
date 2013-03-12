@@ -11,8 +11,8 @@
             <animation effect="slide" start="-729,0" end="0,0" time="400" tween="quadratic">WindowOpen</animation>
             <animation effect="slide" end="-729,0" time="400" tween="quadratic">WindowClose</animation>
             <animation effect="slide" start="-729,0" end="0,0" time="400" tween="quadratic" condition="!Window.IsVisible(script-Actors-DialogVideoInfo.xml)|!Window.IsVisible(script-Actors-DialogInfo.xml)">Conditional</animation>
-            <animation effect="slide" end="-729,0" time="400" tween="quadratic" condition="Window.IsVisible(script-Actors-DialogVideoInfo.xml)|Window.IsVisible(script-Actors-DialogInfo.xml)">Conditional</animation>
-            <control type="image">
+<!--        <animation effect="slide" end="-729,0" time="400" tween="quadratic" condition="Window.IsVisible(script-Actors-DialogVideoInfo.xml)|Window.IsVisible(script-Actors-DialogInfo.xml)">Conditional</animation> -->
+ <control type="image">
                 <width>729</width>
                 <height>1080</height>
                 <texture>info/movieinfogradient.png</texture>
@@ -1138,7 +1138,7 @@
                         <height>70</height>
                         <colordiffuse>FF7c7c7c</colordiffuse>
                         <aspectratio aligny="center" align="center">keep</aspectratio>
-                        <texture>$INFO[ListItem.VideoResolution,flags/video/,.png]</texture>
+                        <texture>$INFO[ListItem.VideoResolution,flags/resolution/,.png]</texture>
                         <visible>!IsEmpty(Control.GetLabel(900014))</visible>
                     </control>
                     <control type="image">
@@ -1370,7 +1370,7 @@
 		<height>177</height>
 		<onup>149</onup>
 		<ondown>Skin.Reset(coverzoom)</ondown>
-		<ondown>SetFocus(19)</ondown>
+		<ondown>SetFocus(5054)</ondown>
 		<ondown>Skin.SetBool(artistzoom)</ondown>
 		<orientation>horizontal</orientation>
 		<scrolltime>350</scrolltime>
@@ -1492,7 +1492,7 @@
                 <onup>50</onup>
                 <ondown>5055</ondown>
                 <orientation>horizontal</orientation>
-                <scrolltime tween="quadratic">200</scrolltime>
+                <scrolltime tween="quadratic">200</scrolltime>		
                 <control type="button" id="8">
                     <label>$LOCALIZE[208]</label>
                     <include>DialogVideoInfoButton</include>
@@ -1524,6 +1524,12 @@
                     <onclick>ActivateWindow(videos,plugin://plugin.video.youtube/?path=/root/search&amp;feed=search&amp;search=$INFO[ListItem.Label] Trailer,return)</onclick>
                     <visible>Container.Content(movies) + ![substring(Container.FolderPath,plugin://) + substring(Container.FolderPath,trailer)]</visible>
                 </control>
+            <control type="button" id="5054">
+				<label>$LOCALIZE[31073]</label>
+                <include>DialogVideoInfoButton</include>
+				<onclick>RunScript(script.metadata.actors,$INFO[Container(50).Listitem.Label])</onclick>
+				<visible>System.HasAddon(script.metadata.actors)</visible>
+            </control>	
                 <control type="button" id="6">
                     <label>$LOCALIZE[184]</label>
                     <include>DialogVideoInfoButton</include>
@@ -1624,8 +1630,8 @@
                     <fadetime>400</fadetime>
                     <bordersize>5</bordersize>
                 </control>
-            </control>
-            <control type="button" id="5054">
+            </control> -->
+<!--        <control type="button" id="5054">
                 <include>HiddenObject</include>
                 <onfocus condition="!System.HasAddon(script.metadata.actors)">SetFocus(5000)</onfocus>
                 <onclick>RunScript(script.metadata.actors,$INFO[Container(50).Listitem.Label])</onclick>
@@ -1634,8 +1640,7 @@
                 <onright>5000</onright>
                 <onup>Control.Move(50,-1)</onup>
                 <ondown>Control.Move(50,1)</ondown>
-            </control>
--->
+            </control> -->	
             <control type="button" id="5055">
                 <include>HiddenObject</include>
                 <onclick condition="IsEmpty(Window(movieinformation).Property(FanartZoom))">SetProperty(FanartZoom,True,movieinformation)</onclick>
